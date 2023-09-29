@@ -9,7 +9,7 @@ function Sell() {
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
   const port = process.env.PORT || 3000;
-  const baseUrl = `http://localhost:${port}`;
+  const baseUrl = 'https://crazycars-backend.vercel.app';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {

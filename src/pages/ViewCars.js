@@ -6,7 +6,7 @@ function ViewCars() {
   const [loading, setLoading] = useState(true);
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-    const baseUrl = 'https://crazycarsbackend.vercel.app';
+    const baseUrl = 'https://crazycars-backend.vercel.app';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {
