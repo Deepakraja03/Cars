@@ -4,6 +4,14 @@ const cors = require("cors");
 require('dotenv').config();
 
 const app = express();
+app.use(cors(
+  {
+    origin: [],
+    methods: [POST,GET],
+    credentials: true
+  }
+))
+
 
 // Allow requests from the specified frontend origin
 app.use(cors());

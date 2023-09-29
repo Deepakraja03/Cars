@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vercel/node": "^3.0.6",
     "dotenv": "^16.3.1"
   }
 }
