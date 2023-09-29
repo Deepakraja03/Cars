@@ -2,13 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require('dotenv').config();
-const dburl = process.env.DBURL;
 
 const app = express();
 
 // Allow requests from the specified frontend origin
 app.use(cors());
-const dbURI = dburl;
+const dbURI = "mongodb+srv://Deepakraja:Barryallen03@cluster0.3atagu3.mongodb.net/Cars";
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
