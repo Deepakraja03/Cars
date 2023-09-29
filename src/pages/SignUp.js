@@ -8,8 +8,7 @@ function SignUp() {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [confirmpassword,setConfirmPassword] = useState('');
-    const port = process.env.PORT || 3000;
-    const baseUrl = `http://localhost:${port}`;
+    const baseUrl = 'https://crazycarsbackend.vercel.app';
 
     function Register(){
         const _firstname = document.getElementById('fname').value;

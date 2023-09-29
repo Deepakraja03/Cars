@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 function Login() {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-    const port = process.env.PORT || 3000;
-    const baseUrl = `http://localhost:${port}`;
+    const baseUrl = 'https://crazycarsbackend.vercel.app';
 
     function loginHandler(){
         const _email = document.getElementById('email').value;
