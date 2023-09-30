@@ -6,7 +6,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-    const baseUrl = 'https://crazycars-backend.vercel.app';
+    const baseUrl = 'http://localhost:3000';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {

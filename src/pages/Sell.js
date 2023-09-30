@@ -8,8 +8,7 @@ function Sell() {
   const [amount, setAmount] = useState('');
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-  const port = process.env.PORT || 3000;
-  const baseUrl = 'https://crazycars-backend.vercel.app';
+  const baseUrl = 'http://localhost:3000';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {
@@ -48,7 +47,7 @@ function Sell() {
       setYear('');
       setAmount('');
     }
-    fetch('`${baseUrl}/post', {
+    fetch(`${baseUrl}/post`, {
       method: 'POST',
       crossDomain: true,
       headers: {
