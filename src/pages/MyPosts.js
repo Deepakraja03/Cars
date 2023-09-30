@@ -84,17 +84,17 @@ function Dashboard() {
         </nav>
       <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pb-6'>
         <div>
-          <center className='text-6xl text-center pt-10 text-gray-800 underline pb-5'>My Posts</center>
+          <center className='text-3xl text-center pt-20 text-gray-800 underline pb-5'>My Posts</center>
         </div>
         {loading ? (
           <div className='text-center text-2xl text-gray-800'>Loading...</div>
         ) : carInfoList.length === 0 ? (
           <div className='text-center text-2xl text-gray-800'>There are no cars available.</div>
         ) : (
-          <div className='mt-8 grid grid-cols-3 gap-7 '>
+          <div className='mt-8 grid grid-cols-1 gap-7 '>
             {Array.isArray(carInfoList) && carInfoList.map((carInfo) => (
               <div key={carInfo._id}>
-                <div className='bg-white w-80 pt-6 ml-6 pb-6 rounded-3xl'>
+                <div className='bg-white w-72 pt-6 ml-6 pb-6 rounded-3xl'>
                   <h2 className='text-center text-2xl'>Details</h2>
                   <div className='flex items-start mt-1'>
                     <span className='w-32 font-bold ml-5 mt-2'>Company:</span>

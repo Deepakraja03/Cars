@@ -72,7 +72,7 @@ function Dashboard() {
             </div>
         </div> */}
         <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pb-6'>
-          <h1 className='text-3xl text-center text-gray-800 pt-20'>User Details</h1>
+          <h1 className='text-3xl font-semibold underline text-center text-gray-800 pt-20'>User Details</h1>
             
             <div className=' ml-6 mt-24 text-white my-4'>
               <div className=' flex-col lg:flex my-10'>

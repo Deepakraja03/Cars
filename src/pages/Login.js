@@ -62,7 +62,7 @@ function Login() {
         <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 min-h-screen pt-24 pb-8'>
         <div className=" flex flex-col justify-center items-center">
           <div className=" bg-white bg-center bg-auto px-6 py-6 rounded-3xl">
-          <h1 className='text-3xl text-center underline text-gray-800'>Sign Up</h1>
+          <h1 className='text-3xl text-center underline text-gray-800'>Sign In</h1>
           <input
             type='email'
             placeholder='E-mail ID'

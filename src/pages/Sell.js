@@ -101,7 +101,7 @@ function Sell() {
       <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pt-24 pb-6'>
         <div className='flex flex-col justify-center items-center'>
         <div className=' bg-white bg-center bg-auto px-6 py-6 rounded-3xl'>
-        <h1 className='text-6xl text-center pt-10 text-gray-800 underline'>Post Cars</h1>
+        <h1 className='text-3xl text-center pt-10 text-gray-800 underline'>Post Cars</h1>
           <input
             type='text'
             placeholder='Company Name'

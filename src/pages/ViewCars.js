@@ -78,33 +78,33 @@ function ViewCars() {
         </nav>
       <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pb-6'>
         <div>
-          <center className='text-6xl text-center pt-10 text-gray-800 underline pb-5'>Cars for Sale</center>
+          <center className='text-3xl text-center pt-20 text-gray-800 underline pb-5'>Cars for Sale</center>
         </div>
         {loading ? (
           <div className='text-center text-2xl text-gray-800'>Loading...</div>
         ) : carInfoList.length === 0 ? (
           <div className='text-center text-2xl text-gray-800'>There are no cars available.</div>
         ) : (
-          <div className='mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-7 sm:grid-cols-1'>
+          <div className='mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-7 grid-cols-1'>
             {carInfoList.map((carInfo) => (
               <div key={carInfo._id}>
-                <div className='bg-white w-80 pt-6 ml-6 pb-6 rounded-3xl'>
+                <div className='bg-white w-72 pt-6 ml-6 pb-6 rounded-3xl'>
                   <h2 className='text-center text-2xl'>Details</h2>
                   <div className='flex items-start mt-1'>
                     <span className='w-32 font-bold ml-5 mt-2'>Company:</span>
-                    <span className='flex-1 truncate mt-2'>{carInfo.companyname}</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.companyname}</span>
                   </div>
                   <div className='flex items-start'>
                     <span className='w-32 font-bold ml-5 mt-2'>Model:</span>
-                    <span className='flex-1 truncate mt-2'>{carInfo.modelname}</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.modelname}</span>
                   </div>
                   <div className='flex items-start'>
                     <span className='w-32 font-bold ml-5 mt-2'>Year:</span>
-                    <span className='flex-1 truncate mt-2'>{carInfo.year}</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.year}</span>
                   </div>
                   <div className='flex items-start'>
                     <span className='w-32 font-bold ml-5 mt-2'>Price:</span>
-                    <span className='flex-1 truncate mt-2'>{carInfo.amount}</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.amount}</span>
                   </div>
                 </div>
               </div>
