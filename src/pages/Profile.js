@@ -6,7 +6,7 @@ import Logout from './components/Logout';
 function Profile() {
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-  const baseUrl = `https://crazycars.vercel.app`;
+  const baseUrl = `https://crazycars-backend.vercel.app`;
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {
