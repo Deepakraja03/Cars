@@ -8,7 +8,7 @@ function SignUp() {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [confirmpassword,setConfirmPassword] = useState('');
-    const baseUrl = 'https://crazycars-backend.vercel.app';
+    const baseUrl = 'https://crazycars.vercel.app';
 
     function Register(){
         const _firstname = document.getElementById('fname').value;
@@ -57,7 +57,6 @@ function SignUp() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data, 'userRegister');
           window.location.href='./login'
         });
     }

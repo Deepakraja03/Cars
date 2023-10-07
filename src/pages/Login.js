@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 function Login() {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-    const baseUrl = 'https://crazycars-backend.vercel.app';
+    const baseUrl = 'https://crazycars.vercel.app';
 
     function loginHandler(){
         const _email = document.getElementById('email').value;
         const _password = document.getElementById('pass').value;
-        console.log(_email,_password);
         if(!_email){
             alert("Email is not Entered.");
         }
@@ -36,7 +35,6 @@ function Login() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data, 'userLogin');
           if(data.status === 'ok'){
             window.localStorage.setItem('token', data.data);
             window.localStorage.setItem('loggedIn', true);

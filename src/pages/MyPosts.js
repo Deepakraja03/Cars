@@ -6,7 +6,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-    const baseUrl = 'https://crazycars-backend.vercel.app';
+    const baseUrl = 'https://crazycars.vercel.app';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {
@@ -66,17 +66,16 @@ function Dashboard() {
             </svg>
           </label>
           <label className=' ml-6 leading-[44px] text-2xl font-bold'>CrazyCars</label>
-          <ul className=' float-right lg:flex mr-10 leading-[44px] space-x-4 uppercase rounded fixed lg:relative h-[100vh] lg:h-0 w-full lg:w-fit
+          <ul className=' float-right lg:flex mr-10 leading-[44px] space-x-4 rounded fixed lg:relative h-[100vh] lg:h-0 w-full lg:w-fit
            pt-20 lg:pt-0 transition-all duration-300 lg:transition-none text-center bg-white -left-full lg:left-0'> 
             <li className=' text-center ml-3'><Link to={'/dashboard'}>Dashboard</Link></li>
-            <li className=' text-center'><Link to={'/viewcars'}>View Cars</Link></li>
             <li className=' text-center'><Link to={'/mypost'}>My Post</Link></li>
             <li className=' text-center'><Link to={'/sell'}>Sell</Link></li>
             <li className='text-center'>
               {isLoggedIn === 'true' ? (
-                <Link to={'/dashboard'}>{userdata.firstname}</Link>
+                <Link to={'/profile'}>{userdata.firstname}</Link>
               ) : (
-                <Link to={'/dashboard'}>Profile</Link>
+                <Link to={'/profile '}>Profile</Link>
               )}
             </li>
             <Logout />
@@ -91,7 +90,7 @@ function Dashboard() {
         ) : carInfoList.length === 0 ? (
           <div className='text-center text-2xl text-gray-800'>There are no cars available.</div>
         ) : (
-          <div className='mt-8 grid grid-cols-1 gap-7 '>
+          <div className='mt-8 grid grid-cols-1 gap-7 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3'>
             {Array.isArray(carInfoList) && carInfoList.map((carInfo) => (
               <div key={carInfo._id}>
                 <div className='bg-white w-72 pt-6 ml-6 pb-6 rounded-3xl'>

@@ -23,7 +23,7 @@ function Home() {
                     </ul>
                 </div>
             </div>
-            <div className=' bg-cover bg-center px-4' style={background}> 
+            <div className=' bg-cover h-screen bg-center px-4' style={background}> 
                 <div className='text-white text-6xl pt-10 font-bold'>
                     Welcome to CrazyCars 
                 </div>

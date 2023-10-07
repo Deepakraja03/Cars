@@ -5,8 +5,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import MyPost from './pages/MyPosts';
-import ViewCars from './pages/ViewCars';
 import Sell from './pages/Sell';
+import Profile from './pages/Profile';
 
 function App() {
   const isLoggedIn = window.localStorage.getItem('loggedIn');
@@ -14,10 +14,10 @@ function App() {
     <Router>
       <Routes>
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={ isLoggedIn === 'true' ? <Dashboard /> : <Login />} />
         <Route path='/mypost' element={<MyPost />} />
-        <Route path='/viewcars' element={<ViewCars />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/' element={<Home />} />
       </Routes>

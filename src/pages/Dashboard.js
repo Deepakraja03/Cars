@@ -1,12 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Logout from './components/Logout';
-
-
 function Dashboard() {
+  const [carInfoList, setCarInfoList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-  const baseUrl = `https://crazycars-backend.vercel.app`;
+    const baseUrl = 'https://crazycars.vercel.app';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {
@@ -30,9 +30,29 @@ function Dashboard() {
           }
         });
   });
+
+  function fetchCarInfo() {
+    setLoading(true);
+    fetch(`${baseUrl}/fetchCars`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCarInfoList(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching car info:', error);
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false when the request is complete (success or error)
+      });
+  }
+  
+  useEffect(() => {
+    fetchCarInfo();
+  }, []);
+
   return (
-      <div>
-        <nav className=' bg-white h-12 w-full fixed'>
+    <div>
+       <nav className=' bg-white h-12 w-full fixed'>
           <input type='checkbox' id='check' hidden />
           <label for="check" className=" float-right text-3xl lg:hidden mt-3 mr-4">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -40,67 +60,57 @@ function Dashboard() {
             </svg>
           </label>
           <label className=' ml-6 leading-[44px] text-2xl font-bold'>CrazyCars</label>
-          <ul className=' float-right lg:flex mr-10 leading-[44px] space-x-4 uppercase rounded fixed lg:relative h-[100vh] lg:h-0 w-full lg:w-fit
+          <ul className=' float-right lg:flex mr-10 leading-[44px] space-x-4 rounded fixed lg:relative h-[100vh] lg:h-0 w-full lg:w-fit
            pt-20 lg:pt-0 transition-all duration-300 lg:transition-none text-center bg-white -left-full lg:left-0'> 
             <li className=' text-center ml-3'><Link to={'/dashboard'}>Dashboard</Link></li>
-            <li className=' text-center'><Link to={'/viewcars'}>View Cars</Link></li>
             <li className=' text-center'><Link to={'/mypost'}>My Post</Link></li>
             <li className=' text-center'><Link to={'/sell'}>Sell</Link></li>
             <li className='text-center'>
               {isLoggedIn === 'true' ? (
-                <Link to={'/dashboard'}>{userdata.firstname}</Link>
+                <Link to={'/profile'}>{userdata.firstname}</Link>
               ) : (
-                <Link to={'/dashboard '}>Profile</Link>
+                <Link to={'/profile '}>Profile</Link>
               )}
             </li>
             <Logout />
           </ul>
         </nav>
-        {/* <div className="bg-white bg-cover py-3">
-            <div className=" flex justify-between">
-                <div className=" ml-5 text-2xl font-bold">
-                    CrazyCars
-                </div>
-                <ul className=" font-semibold flex py-1.5 gap-5 mr-5">
-                    <li className=" hover:bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 hover:rounded-xl cursor-pointer px-1 underline"><Link to={'/dashboard'}>Dashboard</Link></li>
-                    <li className=" hover:bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 hover:rounded-xl cursor-pointer px-1"><Link to={'/viewcars'}>View Cars</Link></li>
-                    <li className=" hover:bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 hover:rounded-xl px-1 cursor-pointer"><Link to={'/mypost'}>My Post</Link></li>
-                    <li className=" hover:bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 hover:rounded-lg px-1 cursor-pointer"><Link to={'/sell'}>Sell</Link></li>
-                    <li className=" hover:bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 hover:rounded-xl px-1 cursor-pointer font-normal"><Link to={'/mypost'}>{userdata.firstname}</Link></li>
-                    <Logout/>
-                </ul>
-            </div>
-        </div> */}
-        <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pb-6'>
-          <h1 className='text-3xl font-semibold underline text-center text-gray-800 pt-20'>User Details</h1>
-            
-            <div className=' ml-6 mt-24 text-white my-4'>
-              <div className=' flex-col lg:flex my-10'>
-                <div className=' text-2xl'>
-                  First Name:
-                </div>
-                <div className=' text-xl mt-1 w-auto overflow-wrap break-words'>
-                  {userdata.firstname}
-                </div>
-              </div>
-              <div className=' flex-col lg:flex my-10'>
-                <div className=' text-2xl'>
-                  Last Name:
-                </div>
-                <div className=' text-xl mt-1 w-auto overflow-wrap break-words'>
-                  {userdata.lastname}
-                </div>
-              </div>
-              <div className=' flex-col lg:flex my-10'>
-                <div className=' text-2xl'>
-                  E-mail:
-                </div>
-                <div className=' text-xl mt-1 w-auto overflow-wrap break-words'>
-                  {userdata.email}
-                </div>
-              </div>
-            </div>
+      <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pb-6'>
+        <div>
+          <center className='text-3xl text-center pt-20 text-gray-800 underline pb-5'>Cars for Sale</center>
         </div>
+        {loading ? (
+          <div className='text-center text-2xl text-gray-800'>Loading...</div>
+        ) : carInfoList.length === 0 ? (
+          <div className='text-center text-2xl text-gray-800'>There are no cars available.</div>
+        ) : (
+          <div className='mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-7 grid-cols-1'>
+            {carInfoList.map((carInfo) => (
+              <div key={carInfo._id}>
+                <div className='bg-white w-72 pt-6 ml-6 pb-6 rounded-3xl'>
+                  <h2 className='text-center text-2xl'>Details</h2>
+                  <div className='flex items-start mt-1'>
+                    <span className='w-32 font-bold ml-5 mt-2'>Company:</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.companyname}</span>
+                  </div>
+                  <div className='flex items-start'>
+                    <span className='w-32 font-bold ml-5 mt-2'>Model:</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.modelname}</span>
+                  </div>
+                  <div className='flex items-start'>
+                    <span className='w-32 font-bold ml-5 mt-2'>Year:</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.year}</span>
+                  </div>
+                  <div className='flex items-start'>
+                    <span className='w-32 font-bold ml-5 mt-2'>Price:</span>
+                    <span className='flex-1 break-words flex-wrap mt-2'>{carInfo.amount}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

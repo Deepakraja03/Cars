@@ -8,7 +8,7 @@ function Sell() {
   const [amount, setAmount] = useState('');
   const [userdata,setUserData] = useState("");
   const isLoggedIn = window.localStorage.getItem('loggedIn');
-  const baseUrl = 'https://crazycars-backend.vercel.app';
+  const baseUrl = 'https://crazycars.vercel.app';
   
   useEffect(() => {
         fetch(`${baseUrl}/auth/userDetail`, {
@@ -82,17 +82,16 @@ function Sell() {
             </svg>
           </label>
           <label className=' ml-6 leading-[44px] text-2xl font-bold'>CrazyCars</label>
-          <ul className=' float-right lg:flex mr-10 leading-[44px] space-x-4 uppercase rounded fixed lg:relative h-[100vh] lg:h-0 w-full lg:w-fit
+          <ul className=' float-right lg:flex mr-10 leading-[44px] space-x-4 rounded fixed lg:relative h-[100vh] lg:h-0 w-full lg:w-fit
            pt-20 lg:pt-0 transition-all duration-300 lg:transition-none text-center bg-white -left-full lg:left-0'> 
             <li className=' text-center ml-3'><Link to={'/dashboard'}>Dashboard</Link></li>
-            <li className=' text-center'><Link to={'/viewcars'}>View Cars</Link></li>
             <li className=' text-center'><Link to={'/mypost'}>My Post</Link></li>
             <li className=' text-center'><Link to={'/sell'}>Sell</Link></li>
             <li className='text-center'>
               {isLoggedIn === 'true' ? (
-                <Link to={'/dashboard'}>{userdata.firstname}</Link>
+                <Link to={'/profile'}>{userdata.firstname}</Link>
               ) : (
-                <Link to={'/dashboard'}>Profile</Link>
+                <Link to={'/profile '}>Profile</Link>
               )}
             </li>
             <Logout />
@@ -101,14 +100,14 @@ function Sell() {
       <div className='bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 bg-cover min-h-screen pt-24 pb-6'>
         <div className='flex flex-col justify-center items-center'>
         <div className=' bg-white bg-center bg-auto px-6 py-6 rounded-3xl'>
-        <h1 className='text-3xl text-center pt-10 text-gray-800 underline'>Post Cars</h1>
+        <h1 className='text-6xl text-center pt-10 text-gray-800 underline'>Post Cars</h1>
           <input
             type='text'
             placeholder='Company Name'
             id='name'
             value={companyname}
             onChange={(e) => setCompnayName(e.target.value)}
-            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black'
+            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black lg:w-96'
             required
           />
           <br />
@@ -118,7 +117,7 @@ function Sell() {
             id='desc'
             value={modelname}
             onChange={(e) => setModelName(e.target.value)}
-            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black'
+            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black lg:w-96'
             required
           />
           <br />
@@ -128,7 +127,7 @@ function Sell() {
             id='year'
             value={year}
             onChange={(e) => setYear(e.target.value)}
-            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black'
+            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black lg:w-96'
             required
           />
           <br />
@@ -138,7 +137,7 @@ function Sell() {
             id='amount'
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black'
+            className='text-center w-60 text-base h-9 mt-10 rounded-2xl flex justify-center border-2 border-black lg:w-96'
             required
           />
           <div className='flex items-center justify-center'>
